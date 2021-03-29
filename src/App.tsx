@@ -1,26 +1,28 @@
 import React from 'react';
+import {
+    Redirect,
+    Route,
+    Switch,
+    BrowserRouter,
+} from 'react-router-dom';
 import logo from './logo.svg';
+import { routes } from './constants/routes';
+import Config from './components/Config';
+import Main from './components/Main';
+import ErrorPage from './components/Main';
 import './App.css';
 
+const { CONFIG } = routes;
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/" component={Main} />
+                <Route path={CONFIG} component={Config} />
+                <Route path="*" component={ErrorPage} />
+            </Switch>
+        </BrowserRouter>
+    );
 }
 
 export default App;

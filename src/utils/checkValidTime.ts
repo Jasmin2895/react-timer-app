@@ -1,5 +1,4 @@
 function getTimeAsNumberOfMinutes(time: string) {
-    console.log('time************', time);
     var timeParts: any = time.split(':');
 
     var timeInMinutes = timeParts[0] * 60 + timeParts[1];
@@ -15,7 +14,6 @@ const calculateLowerBound = (
         high = array.length;
     while (low < high) {
         let mid: number = Math.floor(low + (high - low) / 2);
-        console.log('mid', mid, value <= array[mid], low, high);
         if (
             getTimeAsNumberOfMinutes(value) <=
             getTimeAsNumberOfMinutes(array[mid])
@@ -25,6 +23,8 @@ const calculateLowerBound = (
             low = mid + 1;
         }
     }
+    console.log('low', low);
+    if (low === array.length) low = array.length - 1;
 
     return Math.floor(low);
 
@@ -56,6 +56,7 @@ const calculateLowerBound = (
 const CheckValidTime = (time: string) => {
     let availableTimeRanges: Array<string> =
         localStorage.getItem('selectedTimeRange')?.split(',') || [];
+    console.log('availableTimeRanges', availableTimeRanges);
 
     let v: Array<string> = [];
 
@@ -63,22 +64,16 @@ const CheckValidTime = (time: string) => {
     availableTimeRanges.map((timeRange: string) => {
         let test = timeRange.split(' ').join('').split('-');
         v.push(test[0]);
-        mpp[test[0]] = 1;
+        if (!(test[0] in mpp)) mpp[test[0]] = 1;
         v.push(test[1]);
         mpp[test[1]] = 2;
     });
+
+    console.log('sort', v, mpp);
     v.sort();
 
     let index = calculateLowerBound(v, time);
 
-    console.log(
-        'OOOOOOOO',
-        index,
-        v[index],
-        v[index] === time,
-        mpp[v[index]],
-        mpp,
-    );
     if (index > 0 && v[index] === time) {
         console.log('yes');
         return true;
@@ -87,6 +82,7 @@ const CheckValidTime = (time: string) => {
             console.log('yes');
             return true;
         } else {
+            console.log('no');
             return false;
         }
     }

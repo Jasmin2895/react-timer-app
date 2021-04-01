@@ -2,4 +2,48 @@
     display: grid;
     align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    align-items: baseline;
+    h1 {
+        font-weight: 400;
+    }
+}
+.available-slots {
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    li {
+        align-self: center;
+        margin-top: 20px;
+    }
+
+    span {
+        margin-left: 20px;
+        font-size: 20px;
+        vertical-align: bottom;
+        color: grey;
+    }
+
+    button {
+        margin-left: 12em;
+        vertical-align: bottom;
+    }
+}
+
+.slot-status {
+    width: 30px;
+    height: 30px;
+    vertical-align: bottom;
+}
+
+.time-range {
+    ul {
+        list-style-type: none;
+        padding: 0;
+        font-size: 18px;
+    }
+    li {
+        margin-top: 20px;
+        color: gray;
+    }
 }

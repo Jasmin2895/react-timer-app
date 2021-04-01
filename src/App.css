@@ -1,3 +1,30 @@
 body {
     padding: 4em;
 }
+
+.input-field {
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: 1px solid grey;
+    min-width: 200px;
+}
+
+.add-time-value {
+    background-color: #3a12dd;
+    margin-left: 20px;
+    padding: 10px 20px;
+    border: 1px none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.remove-time-value {
+    margin-left: 30px;
+    border: 1px solid #3a12dd;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: #3a12dd;
+    cursor: pointer;
+}

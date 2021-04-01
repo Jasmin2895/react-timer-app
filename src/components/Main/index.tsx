@@ -22,6 +22,13 @@ const Main: React.FC = () => {
         setTimeRange(previousTimeRange);
     }, []);
 
+    useEffect(() => {
+        localStorage.setItem(
+            'selectedTimeRange',
+            timeRange.toString(),
+        );
+    }, [timeRange]);
+
     const handleClick = () => {
         timeValditor(timeInput);
         let test: string = timeInput;
@@ -67,7 +74,7 @@ const Main: React.FC = () => {
         ]);
         localStorage.setItem(
             'selectedTimeRange',
-            timeInput.toString(),
+            timeRange.toString(),
         );
         console.log('timeInput with no space', timeInput, timeRange);
     };
@@ -82,38 +89,56 @@ const Main: React.FC = () => {
         }
     };
 
-    // const renderTimeRangeList: React.FC = () => {
-    //     return (
-    //         <div>
-    //             {timeRange.map((element) => (
-    //                 <li key={element}>{element}</li>
-    //             ))}
-    //         </div>
-    //     );
-    // };
+    const handleListActions = (ele: string) => {
+        let oldArray = timeRange.filter((time) => ele !== time);
+        console.log('OldArray', oldArray);
+        setTimeRange(oldArray);
+    };
+
     return (
         <div className="wrapper">
-            <h1>Time Ranges</h1>
             <a href="/config">Go to Config Page</a>
-            <label>
-                Start Time:{' '}
-                <input
-                    placeholder="13:40 - 19:34"
-                    type="text"
-                    pattern="\d{1,2}:\d{2}([ap]m)?"
-                    name="starttime"
-                    maxLength={13}
-                    onInput={maxLengthCheck}
-                    onChange={(e) => handleTimeValidation(e)}
-                />
-            </label>
-            <button onClick={handleClick}>Submit</button>
+            <h1>Time Ranges</h1>
+            <div className="input-range">
+                <label>
+                    <input
+                        className="input-range-field"
+                        placeholder="13:40 - 19:34"
+                        type="text"
+                        pattern="\d{1,2}:\d{2}([ap]m)?"
+                        name="starttime"
+                        maxLength={13}
+                        onInput={maxLengthCheck}
+                        onChange={(e) => handleTimeValidation(e)}
+                    />
+                </label>
+                <button
+                    className="input-range-action-btn"
+                    onClick={handleClick}
+                >
+                    +
+                </button>
+            </div>
 
-            <div>
+            <div className="range-list">
                 <ul>
                     {' '}
-                    {timeRange.map((element) => (
-                        <li key={element}>{element}</li>
+                    {timeRange.map((element, index) => (
+                        <div className="list-actions">
+                            <li key={index}>{element}</li>
+                            {element ? (
+                                <button
+                                    className="remove-interval"
+                                    onClick={() =>
+                                        handleListActions(element)
+                                    }
+                                >
+                                    -
+                                </button>
+                            ) : (
+                                ''
+                            )}
+                        </div>
                     ))}
                 </ul>
             </div>

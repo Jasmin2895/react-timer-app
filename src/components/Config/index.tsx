@@ -91,7 +91,7 @@ const Config: React.FC = () => {
         <main className="config-container">
             <div className="time-value">
                 <h1>Time Range Verifier</h1>
-                <div>
+                <div className="time-slot-actions">
                     <input
                         className="input-field"
                         type="text"
@@ -113,22 +113,27 @@ const Config: React.FC = () => {
                                 let currentTime = item.split('|');
                                 return (
                                     <li key={index}>
-                                        {currentTime[1] === 'true' ? (
-                                            <img
-                                                className="slot-status"
-                                                src="/draw-check-mark.svg"
-                                                alt="available-slot"
-                                            ></img>
-                                        ) : (
-                                            <img
-                                                className="slot-status"
-                                                src="/warning.svg"
-                                                alt="not-available-slot"
-                                            ></img>
-                                        )}
-                                        <span>{currentTime[0]}</span>
+                                        <div className="available-slots-details">
+                                            {currentTime[1] ===
+                                            'true' ? (
+                                                <img
+                                                    className="slot-status"
+                                                    src="/draw-check-mark.svg"
+                                                    alt="available-slot"
+                                                ></img>
+                                            ) : (
+                                                <img
+                                                    className="slot-status"
+                                                    src="/warning.svg"
+                                                    alt="not-available-slot"
+                                                ></img>
+                                            )}
+                                            <span>
+                                                {currentTime[0]}
+                                            </span>
+                                        </div>
                                         <button
-                                            className="remove-time-value m-l-12"
+                                            className="remove-time-value m-l-4"
                                             onClick={() =>
                                                 handleTimeSlots(item)
                                             }

@@ -14,23 +14,6 @@
     justify-content: center;
 }
 
-.input-range-field {
-    padding: 10px 20px;
-    border-radius: 4px;
-    border: 1px solid grey;
-    min-width: 200px;
-}
-
-.input-range-action-btn {
-    background-color: #3a12dd;
-    margin-left: 20px;
-    padding: 10px 20px;
-    border: 1px none;
-    border-radius: 8px;
-    color: white;
-    cursor: pointer;
-}
-
 .range-list {
     display: flex;
     justify-content: center;
@@ -51,57 +34,8 @@
     }
 }
 
-.remove-interval {
-    margin-left: 30px;
-    border: 1px solid #3a12dd;
-    background-color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    color: #3a12dd;
-    cursor: pointer;
-}
-
-.header {
-    background: tomato;
-}
-
-.footer {
-    background: lightgreen;
-}
-
-.main {
-    text-align: left;
-    background: deepskyblue;
-}
-
-.aside-1 {
-    background: gold;
-}
-
-.aside-2 {
-    background: hotpink;
-}
-
-@media all and (min-width: 600px) {
-    .aside {
-        flex: 1 0 0;
-    }
-}
-
-@media all and (min-width: 800px) {
-    .main {
-        flex: 3 0px;
-    }
-    .aside-1 {
-        order: 1;
-    }
-    .main {
-        order: 2;
-    }
-    .aside-2 {
-        order: 3;
-    }
-    .footer {
-        order: 4;
+@media all and (max-width: 640px) {
+    #remove-interval {
+        margin-left: 3em;
     }
 }

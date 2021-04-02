@@ -28,3 +28,10 @@ body {
     color: $primary-btn-colour;
     cursor: pointer;
 }
+
+@media all and (max-width: 640px) {
+    .input-field {
+        min-width: fit-content;
+        padding: 10px 10px;
+    }
+}

@@ -1,3 +1,4 @@
+@import './../../sass/index.scss';
 .config-container {
     display: grid;
     align-items: center;
@@ -7,6 +8,10 @@
         font-weight: 400;
     }
 }
+
+.time-slot-actions {
+    display: flex;
+}
 .available-slots {
     ul {
         list-style-type: none;
@@ -15,17 +20,23 @@
     li {
         align-self: center;
         margin-top: 20px;
+        width: fit-content;
+        display: flex;
+        justify-content: space-around;
     }
 
     span {
         margin-left: 20px;
         font-size: 20px;
         vertical-align: bottom;
-        color: grey;
+        color: $primary-text-colour;
     }
 
     button {
         vertical-align: bottom;
+    }
+    &-details {
+        min-width: 200px;
     }
 }
 
@@ -43,6 +54,16 @@
     }
     li {
         margin-top: 20px;
-        color: gray;
+        color: $primary-text-colour;
+    }
+}
+
+@media all and (max-width: 640px) {
+    .time-range {
+        display: none;
+    }
+
+    .available-slots-details {
+        min-width: fit-content;
     }
 }

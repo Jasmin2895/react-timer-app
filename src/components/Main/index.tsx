@@ -45,28 +45,14 @@ const Main: React.FC = () => {
 
             // check for valid input time
             if (timeValditor(splitText[0])) {
-                console.log('correct time', splitText[0]);
                 startTime = splitText[0];
             }
 
             if (timeValditor(splitText[1])) {
-                console.log('correct time', splitText[1]);
                 endTime = splitText[1];
             }
-
-            console.log('startTime endTime', startTime, endTime);
-            // setTimeInput(timeInput.split(' ').join(''));
         }
-        // get data from the current state time range and then data to it...
         let timeRangeNewItem = `${startTime} - ${endTime}`;
-        // if (timeRangeList.indexOf(`${startTime} - ${endTime}`) < 0) {
-        //     timeRangeList.push(`${startTime} - ${endTime}`);
-        //     // Store the value in localstorage
-        //     localStorage.setItem(
-        //         'selectedTimeRange',
-        //         timeRangeList.toString(),
-        //     );
-        // }
 
         setTimeRange((prevTimeRange) => [
             ...prevTimeRange,
@@ -76,7 +62,6 @@ const Main: React.FC = () => {
             'selectedTimeRange',
             timeRange.toString(),
         );
-        console.log('timeInput with no space', timeInput, timeRange);
     };
 
     // check for maxlength of the input field
@@ -91,7 +76,6 @@ const Main: React.FC = () => {
 
     const handleListActions = (ele: string) => {
         let oldArray = timeRange.filter((time) => ele !== time);
-        console.log('OldArray', oldArray);
         setTimeRange(oldArray);
     };
 
@@ -128,7 +112,8 @@ const Main: React.FC = () => {
                             <li key={index}>{element}</li>
                             {element ? (
                                 <button
-                                    className="remove-interval"
+                                    id="remove-interval"
+                                    className="remove-time-value m-l-10"
                                     onClick={() =>
                                         handleListActions(element)
                                     }

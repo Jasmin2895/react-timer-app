@@ -7,14 +7,10 @@ const Main: React.FC = () => {
     const [timeRange, setTimeRange] = useState<Array<string>>([]);
 
     const handleTimeValidation = (event: any) => {
-        console.log('value', event.target.value);
         setTimeInput(event.target.value);
     };
 
     useEffect(() => {
-        console.log(
-            localStorage.getItem('selectedTimeRange')?.split(','),
-        );
         let previousTimeRange: Array<string> =
             localStorage.getItem('selectedTimeRange')?.split(',') ||
             [];
@@ -38,10 +34,7 @@ const Main: React.FC = () => {
         if (/\s/g.test(timeInput)) {
             test = test.split(' ').join('');
 
-            console.log('test', test);
-
             let splitText: Array<string> = test.split('-');
-            console.log('splitText', splitText);
 
             // check for valid input time
             if (timeValditor(splitText[0])) {

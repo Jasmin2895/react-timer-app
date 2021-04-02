@@ -21,23 +21,16 @@ const Config: React.FC = () => {
                 localStorage.getItem('userTimeSlots')?.split(',') ||
                 [];
 
-            console.log('this part executed');
             setTimeSlot(true);
             let updatedTimeSlotsArray: any = [];
             previousUserTimeSlots.map((timeSlots: string) => {
                 let updatedString = timeSlots.split('|');
-                console.log('updatedString', updatedString);
                 updatedTimeSlotsArray.push(
                     `${updatedString[0]}|${CheckValidTime(
                         updatedString[0],
                     )}`,
                 );
             });
-            console.log(
-                'previousUserTimeSlots',
-                previousUserTimeSlots,
-                updatedTimeSlotsArray,
-            );
 
             setUserTimeSlots((prevSlots) => [
                 ...prevSlots,
@@ -61,7 +54,6 @@ const Config: React.FC = () => {
         localStorage.getItem('selectedTimeRange')?.split(',') || [];
 
     const handleChangeTime = (event: any) => {
-        console.log('event', event);
         setTime(event.target.value);
     };
 
@@ -83,7 +75,6 @@ const Config: React.FC = () => {
         let tempArray = userTimeSlots.filter(
             (timeSlot) => timeSlot !== element,
         );
-        console.log('tempArray', tempArray);
         setUserTimeSlots(tempArray);
     };
 

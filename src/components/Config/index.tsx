@@ -99,7 +99,7 @@ const Config: React.FC = () => {
                         onChange={(e) => handleChangeTime(e)}
                     ></input>
                     <button
-                        className="add-time-value"
+                        className="add-time-value m-l-2"
                         onClick={handleSubmitBtn}
                     >
                         +
@@ -128,7 +128,7 @@ const Config: React.FC = () => {
                                         )}
                                         <span>{currentTime[0]}</span>
                                         <button
-                                            className="remove-time-value"
+                                            className="remove-time-value m-l-12"
                                             onClick={() =>
                                                 handleTimeSlots(item)
                                             }

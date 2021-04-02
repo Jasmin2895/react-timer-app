@@ -102,7 +102,7 @@ const Main: React.FC = () => {
             <div className="input-range">
                 <label>
                     <input
-                        className="input-range-field"
+                        className="input-field"
                         placeholder="13:40 - 19:34"
                         type="text"
                         pattern="\d{1,2}:\d{2}([ap]m)?"
@@ -113,7 +113,7 @@ const Main: React.FC = () => {
                     />
                 </label>
                 <button
-                    className="input-range-action-btn"
+                    className="add-time-value"
                     onClick={handleClick}
                 >
                     +

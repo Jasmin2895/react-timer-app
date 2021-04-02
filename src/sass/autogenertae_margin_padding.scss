@@ -1,6 +1,6 @@
 $max: 50;
-$offset: 5;
-$unit: 'px';
+$offset: 2;
+$unit: 'em';
 
 @mixin list-loop($className, $styleName) {
     $i: 0;

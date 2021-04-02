@@ -1,4 +1,4 @@
-@import './variable.scss';
+@import './sass/index.scss';
 body {
     padding: 4em;
 }
@@ -21,7 +21,6 @@ body {
 }
 
 .remove-time-value {
-    margin-left: 30px;
     border: 1px solid $primary-btn-colour;
     background-color: $white;
     padding: 10px 20px;

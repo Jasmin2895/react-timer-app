@@ -10,7 +10,8 @@ import { routes } from './constants/routes';
 import Config from './components/Config';
 import Main from './components/Main';
 import ErrorPage from './components/Main';
-import './App.css';
+import './App1.scss';
+import './sass/index.scss';
 
 const { CONFIG } = routes;
 function App() {

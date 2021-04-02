@@ -16,30 +16,17 @@ This has two pages one to create and add time interval at the route `/` and anot
 
 On Main page you can add the time range in the input field which accepts the specified format. On config page you can validate the specified time against the given time intervals.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Task II
 
-## Available Scripts
+In order tos shift the logic to server side we would need the following API.
 
-In the project directory, you can run:
+1. A POST API to save the defined time ranges on the database.
+2. A GET API to fetch the time ranges from the database.
+3. POST API to save the list of validated time slots added by the user to database.
+4. GET API to retrieve the list of validated time slots from the database.
 
-### `npm start`
+When the user add the time range a POST api call should be made to save the time range. The number of API calls can be large so we can define a limit on the Frontend for the maximum number of time slots that can be added or check on the backend to ensure that maximum time slots added. GET API for time range will be used to fetch the list of time slots on main and config page.
 
-Runs the app in the development mode.
+For config screen we can have a API to save the users list of validated time slots since the number of API calls can be many in this case so we can have a cap limit on Frontend which makes use of **debouncing concept** to make limited API calls to save the validated time slots. If not keeping any cap limit we can use **throttling concept** for making API calls in this case.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Time Range which is currently stored as a Array of strings in localstorage can be passed as UTC string to backend which will be easier to store in DB and also would avoid issues related to different timezones. Similarly user Time slots are stores as string array along with their available status can be passed as collection with time converted to UTC format.

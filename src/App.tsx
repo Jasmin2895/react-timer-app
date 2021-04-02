@@ -18,8 +18,8 @@ function App() {
     return (
         <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={Main} />
-                <Route path={CONFIG} component={Config} />
+                <Route exact path="/" component={Config} />
+                <Route path={CONFIG} component={Main} />
                 <Route path="*" component={ErrorPage} />
             </Switch>
         </BrowserRouter>

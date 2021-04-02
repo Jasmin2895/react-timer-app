@@ -96,6 +96,7 @@ const Config: React.FC = () => {
     return (
         <main className="config-container">
             <div className="time-value">
+                <a href="/config">Go to Config Page</a>
                 <h1>Time Range Verifier</h1>
                 <div className="time-slot-actions">
                     <input

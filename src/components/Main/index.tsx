@@ -87,7 +87,7 @@ const Main: React.FC = () => {
 
     return (
         <div className="wrapper">
-            <a href="/config">Go to Config Page</a>
+            <a href="/">Go to Main Page</a>
             <h1>Time Ranges</h1>
             <div className="input-range">
                 <label>

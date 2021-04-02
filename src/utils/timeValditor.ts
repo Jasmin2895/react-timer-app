@@ -1,6 +1,5 @@
 const timeValidation = (time: string) => {
     let re = /^(\d{1,2}):(\d{2})([ap]m)?$/;
-    console.log('re', time);
     if (time !== '') {
         let regs = time.match(re);
         if (regs === null) return false;

@@ -19,6 +19,9 @@
     },
     "scripts": {
         "start": "react-scripts start",
+        "start:developmemt": "react-scripts start --mode development",
+        "start:staging": "react-scripts start --mode staging",
+        "start:production": "react-scripts start --mode production",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"

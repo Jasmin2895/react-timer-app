@@ -1,4 +1,20 @@
-# Getting Started with Create React App
+# React Timer App
+
+This is a task scheduler application which helps to specify time intervals in which a task can be scheduled. It also has a feature to validate time against the provided time intervals and show that is the time valid.
+
+## Installation
+
+To setup and run the app locally we can use the following commands:
+
+`npm i`
+
+`npm start`
+
+## How does this app work?
+
+This has two pages one to create and add time interval at the route `/` and another page to validate time against different time inetervals at route `/config`.
+
+On Main page you can add the time range in the input field which accepts the specified format. On config page you can validate the specified time against the given time intervals.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

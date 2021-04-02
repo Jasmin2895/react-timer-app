@@ -6,8 +6,11 @@ body {
 .input-field {
     padding: 10px 20px;
     border-radius: 4px;
-    border: 1px solid grey;
+    border: 1px solid $primary-text-colour;
     min-width: 200px;
+    &.error {
+        border-color: $red;
+    }
 }
 
 .add-time-value {
@@ -16,7 +19,7 @@ body {
     padding: 10px 20px;
     border: 1px none;
     border-radius: 8px;
-    color: white;
+    color: $white;
     cursor: pointer;
 }
 

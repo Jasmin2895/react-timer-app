@@ -5,9 +5,11 @@ import './index.scss';
 const Main: React.FC = () => {
     const [timeInput, setTimeInput] = useState<string>('');
     const [timeRange, setTimeRange] = useState<Array<string>>([]);
+    const [hasError, setErrorState] = useState(false);
 
     const handleTimeValidation = (event: any) => {
         setTimeInput(event.target.value);
+        setErrorState(false);
     };
 
     useEffect(() => {
@@ -29,32 +31,43 @@ const Main: React.FC = () => {
         timeValditor(timeInput);
         let test: string = timeInput;
         let startTime: string = '',
-            endTime: string = '';
+            endTime: string = '',
+            isErrorState: boolean = false;
         // check for space in the entered string and replace it with no space.
-        if (/\s/g.test(timeInput)) {
-            test = test.split(' ').join('');
+        try {
+            if (/\s/g.test(timeInput)) {
+                test = test.split(' ').join('');
 
-            let splitText: Array<string> = test.split('-');
+                let splitText: Array<string> = test.split('-');
 
-            // check for valid input time
-            if (timeValditor(splitText[0])) {
-                startTime = splitText[0];
+                if (test.indexOf('-') < 0) throw 'Incorrect details';
+
+                // check for valid input time
+                if (timeValditor(splitText[0])) {
+                    startTime = splitText[0];
+                } else {
+                    throw 'Incorrect details';
+                }
+
+                if (timeValditor(splitText[1])) {
+                    endTime = splitText[1];
+                } else {
+                    throw 'Incorrect details';
+                }
+                let timeRangeNewItem = `${startTime} - ${endTime}`;
+
+                setTimeRange((prevTimeRange) => [
+                    ...prevTimeRange,
+                    timeRangeNewItem,
+                ]);
+                localStorage.setItem(
+                    'selectedTimeRange',
+                    timeRange.toString(),
+                );
             }
-
-            if (timeValditor(splitText[1])) {
-                endTime = splitText[1];
-            }
+        } catch (error) {
+            setErrorState(true);
         }
-        let timeRangeNewItem = `${startTime} - ${endTime}`;
-
-        setTimeRange((prevTimeRange) => [
-            ...prevTimeRange,
-            timeRangeNewItem,
-        ]);
-        localStorage.setItem(
-            'selectedTimeRange',
-            timeRange.toString(),
-        );
     };
 
     // check for maxlength of the input field
@@ -79,7 +92,9 @@ const Main: React.FC = () => {
             <div className="input-range">
                 <label>
                     <input
-                        className="input-field"
+                        className={`input-field ${
+                            hasError ? 'error' : ''
+                        }`}
                         placeholder="13:40 - 19:34"
                         type="text"
                         pattern="\d{1,2}:\d{2}([ap]m)?"

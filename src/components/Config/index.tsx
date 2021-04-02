@@ -13,6 +13,7 @@ const Config: React.FC = () => {
     );
     const [currentSlot, setCurrentSlot] = useState({});
     const [hasTimeSlot, setTimeSlot] = useState(false);
+    const [hasError, setErrorState] = useState(false);
 
     useEffect(() => {
         // TODO:on page refresh recheck the slotavailable variable for each time range
@@ -55,6 +56,7 @@ const Config: React.FC = () => {
 
     const handleChangeTime = (event: any) => {
         setTime(event.target.value);
+        setErrorState(false);
     };
 
     const handleSubmitBtn = () => {
@@ -68,6 +70,8 @@ const Config: React.FC = () => {
                 'userTimeSlots',
                 userTimeSlots.toString(),
             );
+        } else {
+            setErrorState(true);
         }
     };
 
@@ -78,15 +82,30 @@ const Config: React.FC = () => {
         setUserTimeSlots(tempArray);
     };
 
+    const maxLengthCheck = (object: any) => {
+        if (object.target.value.length > object.target.maxLength) {
+            object.target.value = object.target.value.slice(
+                0,
+                object.target.maxLength,
+            );
+        } else {
+            setErrorState(true);
+        }
+    };
+
     return (
         <main className="config-container">
             <div className="time-value">
                 <h1>Time Range Verifier</h1>
                 <div className="time-slot-actions">
                     <input
-                        className="input-field"
+                        className={`input-field ${
+                            hasError ? 'error' : ''
+                        }`}
                         type="text"
                         placeholder="Time Value(14:30)"
+                        maxLength={5}
+                        onInput={maxLengthCheck}
                         onChange={(e) => handleChangeTime(e)}
                     ></input>
                     <button

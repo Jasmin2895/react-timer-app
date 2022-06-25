@@ -40,18 +40,21 @@ const Main: React.FC = () => {
 
                 let splitText: Array<string> = test.split('-');
 
+                // eslint-disable-next-line no-throw-literal
                 if (test.indexOf('-') < 0) throw 'Incorrect details';
 
                 // check for valid input time
                 if (timeValditor(splitText[0])) {
                     startTime = splitText[0];
                 } else {
+                    // eslint-disable-next-line no-throw-literal
                     throw 'Incorrect details';
                 }
 
                 if (timeValditor(splitText[1])) {
                     endTime = splitText[1];
                 } else {
+                    // eslint-disable-next-line no-throw-literal
                     throw 'Incorrect details';
                 }
                 let timeRangeNewItem = `${startTime} - ${endTime}`;

@@ -5,7 +5,6 @@ import {
     Switch,
     BrowserRouter,
 } from 'react-router-dom';
-import logo from './logo.svg';
 import { routes } from './constants/routes';
 import Config from './components/Config';
 import Main from './components/Main';
